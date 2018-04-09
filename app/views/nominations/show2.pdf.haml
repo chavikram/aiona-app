@@ -1,0 +1,344 @@
+= wicked_pdf_stylesheet_link_tag 'bootstrap'
+= wicked_pdf_stylesheet_link_tag 'nomination-pdf'
+
+%div.col-xs-12
+  %div.col-xs-12
+    %td{:colspan=>'4'}
+      %center
+        %h4
+          ALL INDIA NIC S & T OFFICER'S ASSOCIATION (Regd.)
+
+  %div.col-xs-12
+    %center
+      %h4
+        ="Elections for the #{@nomination.election.election_type.name} of AINOA Block Year 2016-2018"
+
+  %div.col-xs-12
+    %center
+      %h4
+        %b="NOMINATION FORM"
+
+  %div.col-xs-12
+    %div.col-xs-5
+      %h4
+        %b="Name of the State:"
+    %div.col-xs-7
+      %h4
+        ="#{@nomination.state.name}"
+  %div.col-xs-12
+    %div.col-xs-5
+      %h4
+        %b="Contesting for the post of:"
+
+    %div.col-xs-7
+      %h4
+        ="#{@nomination.election_post.post.name}"
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        %b="Name of the candidate:"
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.candidate.first_name} #{@nomination.candidate.middle_name} #{@nomination.candidate.last_name}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Employee Code:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.candidate.emp_code}"
+    %div.col-xs-3
+      %h4
+        ="AINOA Membership No:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.candidate.ainoa_membership_no}"
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Designation:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.candidate.designation.title}"
+    %div.col-xs-3
+      %h4
+        ="Date of Superannuation:"
+
+    %div.col-xs-4
+      %h4
+        ="#{l @nomination.candidate.superannuation_date}"
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Place of posting:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.candidate.place_of_posting}"
+    %div.col-xs-3
+      %h4
+        ="Office Address:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.candidate.office_address1}"
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Office Telephone No."
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.candidate.office_tel_no}"
+    %div.col-xs-3
+      %h4
+        ="Mobile No:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.candidate.mobile_no}"                            
+
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Date"
+
+    %div.col-xs-3
+      %h4
+        ="#{l DateTime.now.to_date}"
+    %div.col-xs-3
+      %h4
+        ="Signature"
+
+    %div.col-xs-4
+      %h4
+        ="               "                            
+
+  %div.row
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        %b="Proposed by:"
+        =" Name of the Proposer:"
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.proposer.first_name} #{@nomination.proposer.middle_name} #{@nomination.proposer.last_name}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Employee Code:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.proposer.emp_code}"
+    %div.col-xs-3
+      %h4
+        ="Designation:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.proposer.designation.title}"                            
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        ="Place of Posting/Official Address:"
+
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.proposer.office_address1}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="AINOA Membership No:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.proposer.ainoa_membership_no}"
+    %div.col-xs-3
+      %h4
+        ="Mobile No:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.proposer.mobile_no}"                            
+
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Date"
+
+    %div.col-xs-3
+      %h4
+        ="#{l DateTime.now.to_date}"
+    %div.col-xs-3
+      %h4
+        ="Signature"
+
+    %div.col-xs-4
+      %h4
+        ="               "                      
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        %b="Seconded by:"
+        =" Name of the Seconder-1:"
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.seconders.first.first_name} #{@nomination.seconders.first.middle_name} #{@nomination.seconders.first.last_name}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Employee Code:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.seconders.first.emp_code}"
+    %div.col-xs-3
+      %h4
+        ="Designation:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.seconders.first.designation.title}"                            
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        ="Place of Posting/Official Address:"
+
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.seconders.first.office_address1}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="AINOA Membership No:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.seconders.first.ainoa_membership_no}"
+    %div.col-xs-3
+      %h4
+        ="Mobile No:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.seconders.first.mobile_no}"                            
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Date"
+
+    %div.col-xs-3
+      %h4
+        ="#{l DateTime.now.to_date}"
+    %div.col-xs-3
+      %h4
+        ="Signature"
+
+    %div.col-xs-4
+      %h4
+        ="               "                      
+
+  %hr
+  
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        %b="Seconded by:"
+        =" Name of the Seconder-2:"
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.seconders.second.first_name} #{@nomination.seconders.second.middle_name} #{@nomination.seconders.second.last_name}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Employee Code:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.seconders.second.emp_code}"
+    %div.col-xs-3
+      %h4
+        ="Designation:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.seconders.second.designation.title}"                            
+  %div.col-xs-12
+    %div.col-xs-4
+      %h4
+        ="Place of Posting/Official Address:"
+
+
+    %div.col-xs-8
+      %h4
+        ="#{@nomination.seconders.second.office_address1}"
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="AINOA Membership No:"
+
+    %div.col-xs-3
+      %h4
+        ="#{@nomination.seconders.second.ainoa_membership_no}"
+    %div.col-xs-3
+      %h4
+        ="Mobile No:"
+
+    %div.col-xs-4
+      %h4
+        ="#{@nomination.seconders.second.mobile_no}"                            
+
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Date"
+
+    %div.col-xs-3
+      %h4
+        ="#{l DateTime.now.to_date}"
+    %div.col-xs-3
+      %h4
+        ="Signature"
+
+    %div.col-xs-4
+      %h4
+        ="               "                      
+
+  %div.col-xs-12
+    %b
+      ="I accept the proposal for nomination for the above post in the #{@nomination.election.name} of AINOA"
+
+
+  %div.col-xs-12
+    %div.col-xs-2
+      %h4
+        ="Date"
+
+    %div.col-xs-3
+      %h4
+        ="#{l DateTime.now.to_date}"
+    %div.col-xs-3
+      %h4
+        ="Signature"
+
+    %div.col-xs-4
+      %h4
+        ="               "                      
+

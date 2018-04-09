@@ -1,0 +1,49 @@
+= form_for @member do |f|
+  - if @member.errors.any?
+    #error_explanation
+      %h4= "#{pluralize(@member.errors.count, "error")} prohibited this member from being saved:"
+
+  %div.row.form-group{:class=>(" validation-error" if @member.errors.has_key?(:name)) }
+    %div.col-md-4=f.label :name,  :class=>'control-label'
+    %div.col-md-8
+      =f.text_field :name, :class=>'form-control',:placeholder =>"Type Name..."
+      - if @member.errors.has_key?(:name)
+        %p=@member.errors[:name].to_s
+      - else
+        %span.help-block
+          Enter your name  
+
+  %div.row.form-group{:class=>(" error" if @member.errors.has_key?(:name)) }
+    %div.col-md-4=f.label :emp_code, :class=>'control-label'
+    %div.col-md-8
+      = f.text_field :emp_code, :class=>'form-control',:placeholder =>"Type Employee Code..."
+      - if @member.errors.has_key?(:emp_code)
+        %p=@member.errors[:emp_code].to_s
+      - else
+        %span.help-block
+          Enter your NIC 4-digit emplyee code  
+              
+  
+  %div.row.form-group
+    %div.col-md-4=f.label :designation_code, :class=>'control-label'
+    %div.col-md-8=f.text_field :designation_code, :class=>'form-control',:placeholder =>"Type Designation Code..."
+  
+  %div.row.form-group
+    %div.col-md-4=f.label :ainoa_membership_no, :class=>'control-label'
+    %div.col-md-8=f.text_field :ainoa_membership_no, :class=>'form-control'
+
+  %div.row.form-group
+    %div.col-md-4=f.label :state_code, :class=>'control-label'
+    %div.col-md-8=f.text_field :state_code, :class=>'form-control'
+
+  %div.row.form-group
+    %div.col-md-4=f.label :mobile_no, :class=>'control-label'
+    %div.col-md-8=f.text_field :mobile_no, :class=>'form-control'
+
+  %div.row.form-group
+    %div.col-md-4=f.label :email, :class=>'control-label'
+    %div.col-md-8=f.text_field :email, :class=>'form-control'
+
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Submit'

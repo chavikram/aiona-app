@@ -1,0 +1,22 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election Nominations", election_election_nominations_path(@election)
+    %li
+      =link_to "Election Nomination", election_election_nomination_path(@election,@election_nomination)
+    %li
+      =link_to "Election Nomination", edit_election_nomination_path(@election,@election_nomination)
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  Election Nomination"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+= link_to 'Show', election_election_nomination_path(@election,@election_nomination)
+\|
+= link_to 'Back', election_election_nominations_path(@election,@election_nomination)
+

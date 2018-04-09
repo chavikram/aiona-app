@@ -1,0 +1,87 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election", election_path(@election)
+    %li
+      =link_to "Election Nominations", election_election_nominations_path(@election)
+
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Listing Election Nominations"
+  %div.panel-body
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th 
+            = sortable "election_id", "Election Name"
+          %th 
+            = sortable  "start_date", "Election Start Date"
+          %th 
+            = sortable "form_issue_date", "Form Issue Date"
+          %th 
+            = sortable "online_filing_start_date", "Online Filing Start Date"
+
+          %th 
+            = sortable "online_filing_end_date", "Online Filing End Date"
+          %th 
+            = sortable "offline_filing_start_date", "Offline Filing Start Date"
+          %th 
+            = sortable "offline_filing_end_date", "Offline Filing End Date"
+          %th 
+            = sortable "online_filing_extended_time", "Online Filing Extended Time"
+          %th 
+            = sortable "offline_filing_extended_days", "Offline Filing Extended Days"
+          %th 
+            = sortable "result_datetime", "Result Date"
+          %th 
+            = sortable "sort_order", "Sort Order"
+
+          %th 
+            = sortable "created_at" ,"Created At"
+          %th 
+            = sortable "updated_at","Updated At"
+          %th Quick Action
+      
+      %tbody      
+        %tr
+          = will_paginate @election_nominations, renderer: BootstrapPagination::Rails
+      - @election_nominations.each_with_index do |election_nomination,index|
+        %tr
+          -if params[:page].to_i == 0
+            %td= index+1
+          -else
+            %td= (params[:page].to_i-1)*Rails.application.config.records_per_page+index+1
+          
+  
+          %td= link_to "#{election_nomination.election.name}", election_election_nomination_path(@election,election_nomination) 
+  
+          %td= election_nomination.start_date.to_formatted_s(:long)
+          %td= election_nomination.form_issue_date.to_formatted_s(:long)
+          %td= election_nomination.online_filing_start_date.to_formatted_s(:long)
+          %td= election_nomination.online_filing_end_date.to_formatted_s(:long)
+          %td= election_nomination.offline_filing_start_date.to_formatted_s(:long)
+          %td= election_nomination.offline_filing_end_date.to_formatted_s(:long)
+          %td= election_nomination.online_filing_extended_time
+          %td= election_nomination.offline_filing_extended_days
+          %td= election_nomination.result_datetime.to_formatted_s(:long)
+
+
+          %td= election_nomination.sort_order
+          %td= l election_nomination.created_at
+          %td= l election_nomination.updated_at
+
+          %td
+            = icon_link_to election_election_nomination_path(@election,election_nomination),{:icon => "glyphicon glyphicon-open-file"},{:title=>'Show'}
+            |
+            = icon_link_to  edit_election_election_nomination_path(@election,election_nomination),{:icon => "glyphicon glyphicon-edit"},{:title=>'Edit'}
+            |
+            = icon_link_to election_election_nomination_path(@election,election_nomination),{:icon => "glyphicon glyphicon-trash"},{:title=>'Delete',:method => :delete, :data => { :confirm => 'Are you sure?' }}
+
+%br
+= link_to 'New Election Nomination', new_election_election_nomination_path(@election)
+
+

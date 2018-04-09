@@ -1,0 +1,37 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election Types", election_types_path
+    %li
+      =link_to "Election Type", election_type_path(@election_type)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Election Type"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Type Name"
+        %td=@election_type.name
+      %tr
+        %td= "Is Deleted?"
+        %td= @election_type.deleted
+      %tr
+        %td= "Order"
+        %td= @election_type.sort_order
+      
+      %tr
+        %td= "Created At"
+        %td= @election_type.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @election_type.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_election_type_path(@election_type)
+\|
+= link_to 'Back', election_types_path
+
+

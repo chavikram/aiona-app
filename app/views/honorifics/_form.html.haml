@@ -1,0 +1,19 @@
+= form_for @honorific do |f|
+  - if @honorific.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@honorific.errors.count, "error")} prohibited this honorific from being saved:"
+      %ul
+        - @honorific.errors.full_messages.each do |msg|
+          %li= msg
+
+  %div.row.form-group
+    %div.col-md-4=f.label :name, :class=>'control-label'
+    %div.col-md-8=f.text_field :name, :class=>'form-control',:placeholder =>"Type Title..."
+
+    
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Submit'
+
+
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  election_id: 
+  state_id: 
+  candidate_id: 
+  proposer_id: 
+  accept_flag: false
+  filing_date: 2016-11-06
+
+two:
+  election_id: 
+  state_id: 
+  candidate_id: 
+  proposer_id: 
+  accept_flag: false
+  filing_date: 2016-11-06

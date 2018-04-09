@@ -1,0 +1,70 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election Nominations", election_election_nominations_path(@election)
+    %li
+      =link_to "Election Nomination", election_election_nomination_path(@election,@election_nomination)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Election Nomination"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Election Name"
+        %td=@election_nomination.election.name
+      %tr
+        %td= "Start Date"
+        %td=@election_nomination.start_date.to_formatted_s(:long)
+      %tr
+        %td= "Form Issue Date"
+        %td=@election_nomination.form_issue_date.to_formatted_s(:long)
+      %tr
+        %td= "Online Filing Start Time"
+        %td=@election_nomination.online_filing_start_date.to_formatted_s(:long)
+      %tr
+        %td= "Online Filing End Time"
+        %td=@election_nomination.online_filing_end_date.to_formatted_s(:long)
+      %tr
+        %td= "Offline Filing Start Time"
+        %td=@election_nomination.offline_filing_start_date.to_formatted_s(:long)
+      %tr
+        %td= "Offline Filing End Time"
+        %td=@election_nomination.offline_filing_end_date.to_formatted_s(:long)
+      %tr
+        %td= "Online Filing Extended Time"
+        %td=@election_nomination.online_filing_extended_time
+      %tr
+        %td= "Offline Filing Extended Days"
+        %td=@election_nomination.offline_filing_extended_days
+      %tr
+        %td= "Result Date "
+        %td=@election_nomination.result_datetime
+
+
+
+      %tr
+        %td= "Is Deleted?"
+        %td= @election_nomination.deleted
+      %tr
+        %td= "Order"
+        %td= @election_nomination.sort_order
+      %tr
+        %td= "Active"
+        %td= @election_nomination.active
+      
+      %tr
+        %td= "Created At"
+        %td= @election_nomination.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @election_nomination.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_election_election_nomination_path(@election,@election_nomination)
+\|
+= link_to 'Back', election_election_nominations_path(@election)
+
+

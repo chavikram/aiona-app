@@ -1,0 +1,30 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Honorifics", honorifics_path
+    %li
+      =link_to "Honorific", honorific_path(@honorific)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Honorific"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Honorific Name"
+        %td=@honorific.name
+
+      %tr
+        %td= "Created At"
+        %td= @honorific.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @honorific.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_honorific_path(@honorific)
+\|
+= link_to 'Back', honorifics_path
+

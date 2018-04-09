@@ -1,0 +1,27 @@
+= form_for @designation do |f|
+  - if @designation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@designation.errors.count, "error")} prohibited this designation from being saved:"
+      %ul
+        - @designation.errors.full_messages.each do |msg|
+          %li= msg
+
+  %div.row.form-group
+    %div.col-md-4=f.label :title, :class=>'control-label'
+    %div.col-md-8=f.text_field :title, :class=>'form-control',:placeholder =>"Type Title..."
+
+  %div.row.form-group
+    %div.col-md-4=f.label :code, :class=>'control-label'
+    %div.col-md-8=f.text_field :code, :class=>'form-control',:placeholder =>"Type Code..."
+      
+  %div.row.form-group
+    %div.col-md-4=f.label :short_code, :class=>'control-label'
+    %div.col-md-8=f.text_field :short_code, :class=>'form-control',:placeholder =>"Type Short Code..."
+  
+  %div.row.form-group
+    %div.col-md-4=f.label :sort_order, :class=>'control-label'
+    %div.col-md-8=f.select :sort_order,(0..100),{},{:class=>'form-control'}
+    
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Submit'

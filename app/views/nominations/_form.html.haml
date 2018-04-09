@@ -1,0 +1,175 @@
+= javascript_include_tag 'election_posts'
+= javascript_include_tag 'nominations'
+= javascript_include_tag 'nested_form'
+
+= nested_form_for @nomination  do |f|
+  - if @nomination.errors.any?
+    #error_explanation{:style=>"font-color:red;"}
+      %h4= "#{pluralize((@nomination.errors.count<5?(@nomination.errors.count):5), "error")} prohibited this nomination from being saved:"
+      %ul
+        - @nomination.errors.full_messages.first(5).each do |msg|
+          %li= msg
+
+  %div.row
+    %div.form-group.label-static
+      =f.label :election_id,:class=>'control-label'
+      = f.collection_select(:election_id, Election.order(:id).all, :id,:name,{:include_blank=> true}, {:class=>'form-control',:id=>'election_id'})
+
+  %div.row
+    %div.form-group.col-md-6.label-static
+      =f.label :state_id,:class=>'control-label'
+      = f.collection_select(:state_id, State.order(:id).all, :id,:name,{:include_blank=> true,:selected=>'36'}, {:class=>'form-control',:id=>'nomination_state_id'})
+
+    %div.form-group.col-md-6.label-static
+      =f.label :election_post_id,:class=>'control-label'
+      = f.collection_select(:election_post_id, {}, :id,:post,{:include_blank=> true}, {:class=>'form-control'})
+
+  %label
+    Candidate Information
+  = f.fields_for :candidate do |candidate_form|
+    %div.row
+      %label.col-md-2.form-group.label-static
+        Name of the candidate
+      %div.col-md-1.form-group.label-static
+        =candidate_form.label :honorific_id, :class=>'control-label'
+        =candidate_form.collection_select(:honorific_id, Honorific.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+      %div.form-group.col-md-3.label-static
+        =candidate_form.label :first_name, :class=>'control-label'
+        =candidate_form.text_field :first_name , :class=> 'form-control'
+      %div.form-group.col-md-3.label-static
+        =candidate_form.label :middle_name, :class=>'control-label'
+        =candidate_form.text_field :middle_name , :class=> 'form-control'
+      %div.form-group.col-md-3.label-static
+        =candidate_form.label :last_name, :class=>'control-label'
+        =candidate_form.text_field :last_name , :class=> 'form-control'
+    %div.row
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :emp_code, :class=>'control-label'
+        =candidate_form.text_field :emp_code , :class=> 'form-control'
+      %div.form-group.col-md-6.label-static
+        =candidate_form.label :ainoa_membership_no, :class=>'control-label'
+        =candidate_form.text_field :ainoa_membership_no , :class=> 'form-control'
+    %div.row
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :designation_id, :class=>'control-label'
+        = candidate_form.collection_select(:designation_id, Designation.order(:title).all, :id,:title,{}, {:class=>'form-control'})
+      %div.form-group.col-md-6.label-static
+        =candidate_form.label :superannuation_date, :class=>'control-label'
+        =candidate_form.text_field :superannuation_date, :class=>'form-control datepicker', :value=>"#{candidate_form.object.superannuation_date.try(:strftime,"%d/%m/%Y") unless f.object.new_record? }" 
+    %div.row
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :place_of_posting, :class=>'control-label'
+        =candidate_form.text_field :place_of_posting , :class=> 'form-control'
+
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :office_address1, :class=>'control-label'
+        =candidate_form.text_field :office_address1 , :class=> 'form-control'
+
+    %div.row
+      %div.form-group.col-md-6.label-static
+        =candidate_form.label :office_tel_no, :class=>'control-label'
+        =candidate_form.text_field :office_tel_no , :class=> 'form-control'
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :mobile_no, :class=>'control-label'
+        =candidate_form.text_field :mobile_no , :class=> 'form-control'
+
+    %div.row
+      %div.form-group.col-md-6.label-static
+        =candidate_form.label :res_tel_no, :class=>'control-label'
+        =candidate_form.text_field :res_tel_no , :class=> 'form-control'
+      %div.col-md-6.form-group.label-static
+        =candidate_form.label :email, :class=>'control-label'
+        =candidate_form.text_field :email , :class=> 'form-control'
+  %label
+    Proposed By
+  = f.fields_for :proposer do |proposer_form|
+    %div.row
+      %label.col-md-2.form-group.label-static
+        Name of the Proposer
+      %div.col-md-1.form-group.label-static
+        =proposer_form.label :honorific_id, :class=>'control-label'
+        =proposer_form.collection_select(:honorific_id, Honorific.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+      %div.form-group.col-md-3.label-static
+        =proposer_form.label :first_name, :class=>'control-label'
+        =proposer_form.text_field :first_name , :class=> 'form-control'
+      %div.form-group.col-md-3.label-static
+        =proposer_form.label :middle_name, :class=>'control-label'
+        =proposer_form.text_field :middle_name , :class=> 'form-control'
+      %div.form-group.col-md-3.label-static
+        =proposer_form.label :last_name, :class=>'control-label'
+        =proposer_form.text_field :last_name , :class=> 'form-control'
+    %div.row
+      %div.col-md-6.form-group.label-static
+        =proposer_form.label :emp_code, :class=>'control-label'
+        =proposer_form.text_field :emp_code , :class=> 'form-control'
+      %div.col-md-6.form-group.label-static
+        =proposer_form.label :designation_id, :class=>'control-label'
+        = proposer_form.collection_select(:designation_id, Designation.order(:title).all, :id,:title,{}, {:class=>'form-control'})
+    %div.row
+      %div.col-md-12.form-group.label-static
+        =proposer_form.label :office_address1, :class=>'control-label'
+        =proposer_form.text_field :office_address1 , :class=> 'form-control'
+
+    %div.row
+      %div.form-group.col-md-6.label-static
+        =proposer_form.label :ainoa_membership_no, :class=>'control-label'
+        =proposer_form.text_field :ainoa_membership_no , :class=> 'form-control'
+
+      %div.col-md-6.form-group.label-static
+        =proposer_form.label :mobile_no, :class=>'control-label'
+        =proposer_form.text_field :mobile_no , :class=> 'form-control'
+  %label
+    Seconded By
+    - @nomination.seconders.each_with_index do |seconder,index| 
+
+      = f.fields_for :seconders, seconder do |seconderform|
+        = render 'seconder_fields', f: seconderform      
+  
+      .links
+    /= link_to_add_association "Add Seconder", f, :seconders
+
+  /  
+    = f.fields_for :seconders do |seconder_form|
+      %div.row
+        %label.col-md-2.form-group.label-static
+          Name of the Seconder-2
+        %div.col-md-1.form-group.label-static
+          =seconder_form.label :honorific_id, :class=>'control-label'
+          =seconder_form.collection_select(:honorific_id, Honorific.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+        %div.form-group.col-md-3.label-static
+          =seconder_form.label :first_name, :class=>'control-label'
+          =seconder_form.text_field :first_name , :class=> 'form-control'
+        %div.form-group.col-md-3.label-static
+          =seconder_form.label :middle_name, :class=>'control-label'
+          =seconder_form.text_field :middle_name , :class=> 'form-control'
+        %div.form-group.col-md-3.label-static
+          =seconder_form.label :last_name, :class=>'control-label'
+          =seconder_form.text_field :last_name , :class=> 'form-control'
+      %div.row
+        %div.col-md-6.form-group.label-static
+          =seconder_form.label :emp_code, :class=>'control-label'
+          =seconder_form.text_field :emp_code , :class=> 'form-control'
+        %div.col-md-6.form-group.label-static
+          =seconder_form.label :designation_id, :class=>'control-label'
+          = seconder_form.collection_select(:designation_id, Designation.order(:title).all, :id,:title,{}, {:class=>'form-control'})
+    
+      %div.row
+        %div.col-md-12.form-group.label-static
+          =seconder_form.label :office_address1, :class=>'control-label'
+          =seconder_form.text_field :office_address1 , :class=> 'form-control'
+
+      %div.row
+        %div.form-group.col-md-6.label-static
+          =seconder_form.label :ainoa_membership_no, :class=>'control-label'
+          =seconder_form.text_field :ainoa_membership_no , :class=> 'form-control'
+
+        %div.col-md-6.form-group.label-static
+          =seconder_form.label :mobile_no, :class=>'control-label'
+          =seconder_form.text_field :mobile_no , :class=> 'form-control'
+  
+
+
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Submit', data: { confirm: "Are you sure to submit the form. data once submitted can't be changed." }
+

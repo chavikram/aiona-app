@@ -1,0 +1,18 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Honorifics", honorifics_path
+    %li
+      =link_to "New Honorific", new_honorific_path(@honorific)
+%div.panel.panel-info
+  %div.panel-heading
+    ="New  Honorific"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+
+= link_to 'Back', honorifics_path
+

@@ -1,0 +1,47 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Members", members_path
+    %li
+      =link_to "Member", member_path(@member)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Member"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Member Name"
+        %td=@member.name
+      %tr
+        %td= "Member Employee Code"
+        %td= @member.emp_code
+      %tr
+        %td= "Member Designation Code"
+        %td= @member.designation_code
+      %tr
+        %td= "Member AINOA Membership No"
+        %td= @member.ainoa_membership_no
+      %tr
+        %td= "State Code"
+        %td= @member.state_code
+      %tr
+        %td= "Mobile Code"
+        %td= @member.mobile_no
+
+      %tr
+        %td= "Email"
+        %td= @member.email
+      %tr
+        %td= "Created At"
+        %td= @member.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @member.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_member_path(@member)
+\|
+= link_to 'Back', members_path

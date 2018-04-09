@@ -1,0 +1,46 @@
+
+= javascript_include_tag 'elections.js'
+
+= simple_form_for [@election,@election_post] do |f|
+
+  = f.hidden_field :election_id, :value=>"#{@election.id}"
+  - if @election_post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@election_post.errors.count, "error")} prohibited this member from being saved:"
+      %ul
+        - @election_post.errors.full_messages.each do |msg|
+          %li= msg
+  /
+    %div.row.form-group
+      %div.col-md-4=f.label :election_id, :class=>'control-label'
+      %div.col-md-8= f.collection_select(:election_id, Election.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+
+  %div.row.form-group
+    %div.col-md-4=f.label :state_id, :class=>'control-label'
+    %div.col-md-8= f.collection_select(:state_id, State.order(:name).all, :id,:name,{}, {:class=>'form-control'})
+
+  %div.row.form-group
+    %div.col-md-4=f.label :post_id, :class=>'control-label'
+    %div.col-md-8= f.collection_select(:post_id, Post.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+
+  %div.row.form-group
+    %div.col-md-4=f.label :no_of_post, :class=>'control-label'
+    %div.col-md-8=f.select :no_of_post,(0..100),{},{:class=>'form-control'}
+
+  %div.row.form-group
+    %div.col-md-4=f.label :sort_order, :class=>'control-label'
+    %div.col-md-8=f.select :sort_order,(0..100),{},{:class=>'form-control'}
+
+  %div.form-group
+    %div.col-md-4=f.label :deleted, :class=>'control-label'
+    %div.col-md-8.checkbox
+      %label
+        =f.check_box :deleted, :class=>'form-control'
+        %span.checkbox-material
+          %span.check
+
+        
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Save'
+

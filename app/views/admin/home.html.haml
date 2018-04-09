@@ -1,0 +1,41 @@
+!!!html
+%head
+  %title AIONA Election Application 2016
+
+  = stylesheet_link_tag    "//fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+  = stylesheet_link_tag    "//fonts.googleapis.com/icon?family=Material+Icons"
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+
+
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+  = csrf_meta_tags 
+
+%body
+  %div.row
+    %div.col-md-2
+      =link_to "Manage Members", members_path 
+      %hr
+      =link_to "Manage Designations", designations_path 
+      %hr
+      =link_to "Manage Election Types", election_types_path 
+      %hr
+      =link_to "Manage Posts", posts_path 
+      %hr
+      =link_to "Manage Elections", elections_path
+
+      %hr
+      =link_to "Manage States", states_path
+
+      %hr
+      =link_to "Manage Honorific", honorifics_path
+
+      %hr
+      =link_to "Manage Nominations", nominations_path
+
+      %hr
+      =link_to "Manage Nomination Attachments", nomination_attachments_path
+        
+    %div.col-md-10
+      =yield :nav_path
+      = yield
+      

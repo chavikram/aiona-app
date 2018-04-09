@@ -1,0 +1,22 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Posts", posts_path
+    %li
+      =link_to "Post", post_path(@post)
+    %li
+      =link_to "Edit Post", edit_post_path(@post)
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  Post"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+= link_to 'Show', post_path(@post)
+= link_to 'Back', post_path(@post)
+
+

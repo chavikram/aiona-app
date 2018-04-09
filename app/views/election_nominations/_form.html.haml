@@ -1,0 +1,76 @@
+= javascript_include_tag 'election_nominations.js'
+
+= form_for [@election, @election_nomination] do |f|
+  - if @election_nomination.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@election_nomination.errors.count, "error")} prohibited this member from being saved:"
+      %ul
+        - @election_nomination.errors.full_messages.each do |msg|
+          %li= msg
+
+  %div.row.form-group
+    %div.col-md-4=f.label :start_date, :class=>'control-label'
+    %div.col-md-8=f.text_field :start_date, :class=>'form-control datepicker', :value=>"#{f.object.start_date.try(:strftime,"%d/%m/%Y") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :form_issue_date, :class=>'control-label'
+    %divinput-group.date.col-md-8
+      =f.text_field :form_issue_date, :class=>'form-control',:id=>'datetimepicker_form_issue_date',:value=>"#{f.object.form_issue_date.try(:strftime,"%d/%m/%Y %I:%M %p") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :online_filing_start_date, :class=>'control-label'
+    %divinput-group.date.col-md-8
+      =f.text_field :online_filing_start_date, :class=>'form-control',:id=>'datetimepicker_online_filing_start_date',:value=>"#{f.object.online_filing_start_date.try(:strftime,"%d/%m/%Y %I:%M %p") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :online_filing_end_date , :class=>'control-label'
+    %divinput-group.date.col-md-8
+      =f.text_field :online_filing_end_date , :class=>'form-control',:id=>'datetimepicker_online_filing_end_date',:value=>"#{f.object.online_filing_end_date.try(:strftime,"%d/%m/%Y %I:%M %p") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :offline_filing_start_date, :class=>'control-label'
+    %div.col-md-8=f.text_field :offline_filing_start_date, :class=>'form-control datepicker', :value=>"#{f.object.offline_filing_start_date.try(:strftime,"%d/%m/%Y") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :offline_filing_end_date, :class=>'control-label'
+    %div.col-md-8=f.text_field :offline_filing_end_date, :class=>'form-control datepicker', :value=>"#{f.object.offline_filing_end_date.try(:strftime,"%d/%m/%Y") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :online_filing_extended_time, :class=>'control-label'
+    %div.col-md-8=f.select :online_filing_extended_time,options_for_select((0..3600).step(30).map{|t| ["#{t/60} : #{t%60}","#{t}"]}),{}, {:class=>'form-control'}
+
+  %div.row.form-group
+    %div.col-md-4=f.label :offline_filing_extended_days, :class=>'control-label'
+    %div.col-md-8=f.select :offline_filing_extended_days,options_for_select((0..30)),{}, {:class=>'form-control'}
+
+  %div.row.form-group
+    %div.col-md-4=f.label :result_datetime, :class=>'control-label'
+    %divinput-group.date.col-md-8
+      =f.text_field :result_datetime , :class=>'form-control',:id=>'datetimepicker_result_datetime',:value=>"#{f.object.result_datetime.strftime("%d/%m/%Y %I:%M %p") unless f.object.new_record? }" 
+
+  %div.row.form-group
+    %div.col-md-4=f.label :sort_order, :class=>'control-label'
+    %div.col-md-8=f.select :sort_order,(0..100),{},{:class=>'form-control'}
+
+
+  %div.form-group
+    %div.col-md-4=f.label :active, :class=>'control-label'
+    %div.col-md-8.checkbox
+      %label
+        =f.check_box :active, :class=>'form-control'
+        %span.checkbox-material
+          %span.check
+        
+
+  %div.form-group
+    %div.col-md-4=f.label :deleted, :class=>'control-label'
+    %div.col-md-8.checkbox
+      %label
+        =f.check_box :deleted, :class=>'form-control'
+        %span.checkbox-material
+          %span.check
+
+  %div.row.form-group
+    %div.col-md-12
+      = f.submit :class=>'btn btn-default', :value=>'Save'
+

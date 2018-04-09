@@ -1,0 +1,38 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Designations", designations_path
+    %li
+      =link_to "Designation", designation_path(@designation)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Designation"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Designation Name"
+        %td=@designation.title
+      %tr
+        %td= "Designation Code"
+        %td= @designation.code
+      %tr
+        %td= "Designation Short Code"
+        %td= @designation.short_code
+      %tr
+        %td= "Designation Order"
+        %td= @designation.sort_order
+
+      %tr
+        %td= "Created At"
+        %td= @designation.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @designation.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_designation_path(@designation)
+\|
+= link_to 'Back', designations_path

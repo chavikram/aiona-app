@@ -1,0 +1,32 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All States", states_path
+    %li
+      =link_to "State", state_path(@state)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show State"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "State Name"
+        %td=@state.name
+      %tr
+        %td= "State Code"
+        %td= @state.code
+
+      %tr
+        %td= "Created At"
+        %td= @state.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @state.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_state_path(@state)
+\|
+= link_to 'Back', states_path

@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  honorific_id: 
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  emp_code: MyString
+  ainoa_membership_no: MyString
+  designation_id: 
+  superannuation_date: 2016-11-06
+  office_address1: MyString
+  office_address2: MyString
+  city: MyString
+  state_id: 
+  office_tel_no: MyString
+  mobile_no: MyString
+  res_tel_no: MyString
+  email: MyString
+  signing_date: 2016-11-06
+
+two:
+  honorific_id: 
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  emp_code: MyString
+  ainoa_membership_no: MyString
+  designation_id: 
+  superannuation_date: 2016-11-06
+  office_address1: MyString
+  office_address2: MyString
+  city: MyString
+  state_id: 
+  office_tel_no: MyString
+  mobile_no: MyString
+  res_tel_no: MyString
+  email: MyString
+  signing_date: 2016-11-06

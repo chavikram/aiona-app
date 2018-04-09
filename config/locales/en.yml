@@ -1,0 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  time:
+    formats:
+      default: "%d/%m/%Y %I:%M %p"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%b %d"
+      long: "%d/%m/%Y"
+      pdf: "%B %e, %Y"
+  helpers:
+    label:
+      designation:
+        title: 'Designation Name'
+        code: 'Designation code'
+        short_code: 'Designation short code'
+      nomination:
+        election_id: 'Select Name of the Election'  
+        state_id: 'Name of the State'
+      nomination_attachment:
+        :nomination_id: 'Enter your Nomination ID'
+        :registration_no: 'Enter your registration no'
+      nomination[candidate_attributes]:
+        first_name: 'First Name'  
+        middle_name: 'Middle Name'
+        last_name: 'Last Name'
+        emp_code: 'Employee Code'
+        ainoa_membership_no: 'AINOA Membership No'
+        designation_id: 'Designation'
+        superannuation_date: 'Date of Superannuation'
+        office_address1: 'Office Address'
+        office_tel_no: 'Office Telephone No (With STD Code)'
+        mobile_no: 'Mobile No'
+        res_tel_no: 'Res. Telephone No'
+        email: 'Email'
+        place_of_posting: 'Place of Posting'
+      nomination[proposer_attributes]:
+        first_name: 'First Name'  
+        middle_name: 'Middle Name'
+        last_name: 'Last Name'
+        emp_code: 'Employee Code'
+        ainoa_membership_no: 'AINOA Membership No'
+        designation_id: 'Designation'
+        superannuation_date: 'Date of Superannuation'
+        office_address1: 'Office Address'
+        office_tel_no: 'Office Telephone No (With STD Code)'
+        mobile_no: 'Mobile No'
+        res_tel_no: 'Res. Telephone No'
+        email: 'Email'
+        place_of_posting: 'Place of Posting'
+
+      "nomination[seconders]":
+        first_name: 'First Name'  
+        middle_name: 'Middle Name'
+        last_name: 'Last Name'
+        emp_code: 'Employee Code'
+        ainoa_membership_no: 'AINOA Membership No'
+        designation_id: 'Designation'
+        superannuation_date: 'Date of Superannuation'
+        office_address1: 'Office Address'
+        office_tel_no: 'Office Telephone No (With STD Code)'
+        mobile_no: 'Mobile No'
+        res_tel_no: 'Res. Telephone No'
+        email: 'Email'
+        place_of_posting: 'Place of Posting'
+

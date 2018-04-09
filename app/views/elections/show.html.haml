@@ -1,0 +1,67 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Elections", elections_path
+    %li
+      =link_to "Election", election_path(@election)
+
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Election Type"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Name"
+        %td=@election.name
+      %tr
+        %td= "Election Type"
+        %td= @election.election_type.name
+      %tr
+        %td= "Election Date"
+        %td=@election.election_date.to_formatted_s(:long)
+
+      %tr
+        %td= "Election Start Time"
+        %td= @election.election_start_time.to_formatted_s(:long)
+
+      %tr
+        %td= "Election End Time"
+        %td= @election.election_end_time.to_formatted_s(:long)
+
+      %tr
+        %td= "Election Extended By"
+        %td
+          = @election.extended_time
+          &nbsp; minutes
+      %tr
+        %td= "Election Extended Time"
+        %td
+          = (@election.election_end_time + @election.extended_time.minutes).to_formatted_s(:long)
+
+      %tr
+        %td= "Order"
+        %td= @election.sort_order
+
+      %tr
+        %td= "Active"
+        %td= @election.active
+            
+      %tr
+        %td= "Created At"
+        %td= @election.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @election.updated_at.to_formatted_s(:long)
+
+        
+= link_to 'Edit', edit_election_path(@election)
+\|
+= link_to 'Back', elections_path
+\|
+= link_to "Election Posts", election_election_posts_path(@election)
+\|
+= link_to "Election Nomination", election_election_nominations_path(@election)

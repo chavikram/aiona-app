@@ -1,0 +1,14 @@
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Nomination "
+  %div.panel-body
+
+	%h1 
+	  - @nomination = 	@nomination_attachment.nomination
+
+	  = render 'show'
+	  =link_to "Download Scanned Nomination PDF", @nomination_attachment.attachment.url
+	%hr
+	%h3
+	  =link_to "Download Uploaded PDF",@nomination.nomination_attachment.attachment.url  

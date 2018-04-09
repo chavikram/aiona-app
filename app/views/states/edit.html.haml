@@ -1,0 +1,21 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All States", states_path
+    %li
+      =link_to "State", state_path(@state)
+    %li
+      =link_to "Edit Designation", edit_state_path(@state)
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  State"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+
+= link_to 'Show', state_path(@state)
+= link_to 'Back', state_path(@state)

@@ -1,0 +1,20 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election Types", election_types_path
+    %li
+      =link_to "Election Type", election_type_path(@election_type)
+    %li
+      =link_to "Election Type", edit_election_type_path(@election_type)
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  Election Type"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+= link_to 'Show', election_type_path(@election_type)
+= link_to 'Back', election_type_path(@election_type)

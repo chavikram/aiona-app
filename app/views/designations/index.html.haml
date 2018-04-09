@@ -1,0 +1,57 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Designations", designations_path
+
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Listing Designations"
+  %div.panel-body
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th 
+            = sortable "title", "Title"
+          %th 
+            = sortable "code", "Code"
+          %th
+            = sortable "short_code", "Short Code"
+          %th 
+            = sortable "sort_order", "Order"
+          %th 
+            = sortable "created_at" ,"Created At"
+          %th 
+            = sortable "updated_at","Updated At"
+          %th Quick Action
+
+      %tbody      
+        %tr
+          = will_paginate @designations, renderer: BootstrapPagination::Rails
+
+      - @designations.each_with_index do |designation,index|
+        %tr
+          -if params[:page].to_i == 0
+            %td= index+1
+          -else
+            %td= (params[:page].to_i-1)*Rails.application.config.records_per_page+index+1
+          
+          %td=link_to "#{designation.title}", designation
+          %td= designation.code
+          %td= designation.short_code
+          %td= designation.sort_order
+
+          %td= l designation.created_at
+          %td= l designation.updated_at
+          %td
+            = icon_link_to designation_path(designation),{:icon => "glyphicon glyphicon-open-file"},{:title=>'Show'}
+            |
+            = icon_link_to  edit_designation_path(designation),{:icon => "glyphicon glyphicon-edit"},{:title=>'Edit'}
+            |
+            = icon_link_to designation_path(designation),{:icon => "glyphicon glyphicon-trash"},{:title=>'Delete',:method => :delete, :data => { :confirm => 'Are you sure?' }}
+
+%br
+= link_to 'New Designation', new_designation_path

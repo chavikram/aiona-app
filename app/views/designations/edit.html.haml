@@ -1,0 +1,20 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Designations", designations_path
+    %li
+      =link_to "Designation", designation_path(@designation)
+    %li
+      =link_to "Edit Designation", edit_designation_path(@designation)
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  Designation"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+= link_to 'Show', designation_path(@designation)
+= link_to 'Back', designation_path(@designation)

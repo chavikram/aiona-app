@@ -1,0 +1,2 @@
+module HonorificsHelper
+end

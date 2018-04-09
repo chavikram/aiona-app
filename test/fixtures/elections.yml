@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  election_date: 2016-11-03
+  election_start_time: 2016-11-03 13:31:23
+  election_end_time: 2016-11-03 13:31:23
+  extended_time: 1
+  election_type_id: 
+  sort_order: 1
+  deleted: false
+
+two:
+  name: MyString
+  election_date: 2016-11-03
+  election_start_time: 2016-11-03 13:31:23
+  election_end_time: 2016-11-03 13:31:23
+  extended_time: 1
+  election_type_id: 
+  sort_order: 1
+  deleted: false

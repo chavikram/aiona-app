@@ -1,0 +1,40 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Posts", posts_path
+    %li
+      =link_to "Post", post_path(@post)
+
+%p#notice= notice
+%div.panel.panel-info
+  %div.panel-heading
+    ="Show Post"
+  %div.panel-body
+    %table.table
+      %tr
+        %td= "Name"
+        %td=@post.name
+      %tr
+        %td= "Election Type"
+        %td= @post.election_type.name
+      %tr
+        %td= "Is Deleted?"
+        %td= @post.deleted
+      %tr
+        %td= "Order"
+        %td= @post.sort_order
+
+      %tr
+        %td= "Created At"
+        %td= @post.created_at.to_formatted_s(:long)
+      %tr
+        %td= "Updated At"
+        %td= @post.updated_at.to_formatted_s(:long)
+        
+= link_to 'Edit', edit_post_path(@post)
+\|
+= link_to 'Back', posts_path
+
+

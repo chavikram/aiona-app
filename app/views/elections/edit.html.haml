@@ -1,0 +1,21 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "All Elections", elections_path
+    %li
+      =link_to "Election", election_path(@election)
+    %li
+      =link_to "Edit Election", election_path(@election)
+
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Editing  Election"
+  %div.panel-body
+    %div.col-md-8
+      = render 'form'
+    %div.col-md-4
+= link_to 'Show', election_path(@election)
+= link_to 'Back', election_path(@election)

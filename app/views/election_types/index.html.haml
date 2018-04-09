@@ -1,0 +1,58 @@
+- content_for :nav_path do
+  %ol.breadcrumb
+    %li
+      =link_to "Home", root_path
+    %li
+      =link_to "Election Types", election_types_path
+
+%div.panel.panel-info
+  %div.panel-heading
+    ="Listing Election Types"
+  %div.panel-body
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th 
+            = sortable "name", "Name"
+          %th 
+            = sortable "sort_order", "Order"
+          %th 
+            = sortable "created_at" ,"Created At"
+          %th 
+            = sortable "updated_at","Updated At"
+          
+          %th Quick Action
+      
+      %tbody      
+        %tr
+          = will_paginate @election_types, renderer: BootstrapPagination::Rails
+
+      - @election_types.each_with_index do |election_type,index|
+        %tr
+          -if params[:page].to_i == 0
+            %td= index+1
+          -else
+            %td= (params[:page].to_i-1)*Rails.application.config.records_per_page+index+1
+          
+          %td=link_to "#{election_type.name}", election_type
+          %td= election_type.sort_order
+          
+          
+          %td= l election_type.created_at
+          %td= l election_type.updated_at
+          %td
+            = icon_link_to election_type_path(election_type),{:icon => "glyphicon glyphicon-open-file"},{:title=>'Show'}
+            |
+            = icon_link_to  edit_election_type_path(election_type),{:icon => "glyphicon glyphicon-edit"},{:title=>'Edit'}
+            |
+            = icon_link_to election_type_path(election_type),{:icon => "glyphicon glyphicon-trash"},{:title=>'Delete',:method => :delete, :data => { :confirm => 'Are you sure?' }}
+
+%br
+= link_to 'New Election Type', new_election_type_path
+
+
+
+
+
+

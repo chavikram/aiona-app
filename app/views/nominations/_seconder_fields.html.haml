@@ -1,0 +1,33 @@
+%div.row
+  %div.col-md-2.form-group.label-static
+    ="Name of the Seconder- #{f.index.to_i+1}"
+  %div.col-md-1.form-group.label-static
+    =f.label :honorific_id, :class=>'control-label'
+    =f.collection_select(:honorific_id, Honorific.order(:id).all, :id,:name,{}, {:class=>'form-control'})
+  %div.form-group.col-md-3.label-static
+    =f.label :first_name, :class=>'control-label'
+    =f.text_field :first_name , :class=> 'form-control'
+  %div.form-group.col-md-3.label-static
+    =f.label :middle_name, :class=>'control-label'
+    =f.text_field :middle_name , :class=> 'form-control'
+  %div.form-group.col-md-3.label-static
+    =f.label :last_name, :class=>'control-label'
+    =f.text_field :last_name , :class=> 'form-control'
+%div.row
+  %div.col-md-6.form-group.label-static
+    =f.label :emp_code, :class=>'control-label'
+    =f.text_field :emp_code , :class=> 'form-control'
+  %div.col-md-6.form-group.label-static
+    =f.label :designation_id, :class=>'control-label'
+    = f.collection_select(:designation_id, Designation.order(:title).all, :id,:title,{}, {:class=>'form-control'})
+%div.row
+  %div.col-md-12.form-group.label-static
+    =f.label :office_address1, :class=>'control-label'
+    =f.text_field :office_address1 , :class=> 'form-control'
+%div.row
+  %div.form-group.col-md-6.label-static
+    =f.label :ainoa_membership_no, :class=>'control-label'
+    =f.text_field :ainoa_membership_no , :class=> 'form-control'
+  %div.col-md-6.form-group.label-static
+    =f.label :mobile_no, :class=>'control-label'
+    =f.text_field :mobile_no , :class=> 'form-control'
